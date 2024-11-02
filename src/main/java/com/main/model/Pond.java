@@ -1,32 +1,31 @@
-package com.main;
+package com.main.model;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Document(collection = "ponds")
 public class Pond {
-    
+
     @Id
     private String id;
     private String name;
+    private String location; // Added location field
     private List<Sensor> sensors = new ArrayList<>();
 
-    @CreatedDate // Automatically sets the creation date
+    @CreatedDate
     private LocalDateTime createdAt;
 
     public Pond() {}
 
-    public Pond(String id, String name) {
+    public Pond(String id, String name, String location) {
         this.id = id;
         this.name = name;
+        this.location = location;
     }
-
-    // Getters and Setters
 
     public String getId() {
         return id;
@@ -42,6 +41,14 @@ public class Pond {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public List<Sensor> getSensors() {

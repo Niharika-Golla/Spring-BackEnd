@@ -1,4 +1,4 @@
-package com.main;
+package com.main.model;
 
 import org.springframework.data.annotation.CreatedDate;
 import java.time.LocalDateTime;
@@ -7,7 +7,7 @@ public class Sensor {
     private String type;
     private String value;
 
-    @CreatedDate // Automatically set by Spring Data MongoDB
+    @CreatedDate
     private LocalDateTime timestamp;
 
     public Sensor() {}
@@ -15,10 +15,7 @@ public class Sensor {
     public Sensor(String type, String value) {
         this.type = type;
         this.value = value;
-        this.timestamp = LocalDateTime.now(); // Set current time
     }
-
-    // Getters and Setters
 
     public String getType() {
         return type;
